@@ -1,197 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>Pink Aura By Dracilla</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PiNK AURA</title>
+
+    <!-- stylesheets -->
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="icon" href="assets/logo.jpg"/>
+
+    <link rel="icon" href="assets/logo.png" />
 </head>
+
 <body>
 
-<?php
-    include "connection.php";
+    <section class="index-sec">
 
-    // set a cookie to store email & password
-    $email = "";
-    $password = "";
-    if (isset($_COOKIE["email"])) { 
-        $email = $_COOKIE["email"]; 
-    }
-    if (isset($_COOKIE["password"])) { 
-        $password = $_COOKIE["password"]; 
-    }
-?>
+        <div class="login-sec-container col-lg-4 p-2 d-flex justify-content-center align-items-center">
+            <div>
+                <h3 class="login-sec-header">𐙚⋆° Welcome to PiNK AURA !! ｡⋆♡</h3>
+                <h2 class="login-sec-header2 mt-4">Login </h2>
 
-<div class="auth-page">
-
-    <!-- ── left brand panel ── -->
-    <div class="auth-brand">
-        <div class="auth-brand__inner">
-            <p class="auth-brand__pre">✦ welcome to ✦</p>
-            <h1 class="auth-brand__name">PiNK<br>AURA</h1>
-            <p class="auth-brand__tagline">by dracilla</p>
-            <div class="auth-brand__pills">
-                <span>skincare</span>
-                <span>makeup</span>
-                <span>haircare</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- ── right form panel ── -->
-    <div class="auth-panel">
-
-        <!-- ===== LOGIN FORM ===== -->
-        <div class="auth-card" id="loginCard">
-
-            <div class="auth-card__deco">✿ ✦ ✿</div>
-            <h2 class="auth-card__title">Login</h2>
-
-            <div class="col-12 d-none" id="msgdiv">
-                <div class="alert alert-danger" role="alert" id="msg"></div>
-            </div>
-
-            <!-- email -->
-            <div class="inp-wrap">
-                <input type="email" id="email" class="inp-field" placeholder=" " required value="<?php echo $email; ?>">
-                <label class="inp-label">Email</label>
-            </div>
-
-            <!-- password -->
-            <div class="inp-wrap">
-                <input type="password" id="password" class="inp-field" placeholder=" " required value="<?php echo $password; ?>">
-                <label class="inp-label">Password</label>
-                <button type="button" class="inp-eye" onclick="sp1();">
-                    <i id="spi1" class="bi bi-eye-slash"></i>
-                </button>
-            </div>
-
-            <!-- remember + forgot -->
-            <div class="auth-row">
-                <label class="auth-check">
-                    <input type="checkbox" id="rememberMe">
-                    <span>Remember me</span>
-                </label>
-                <a href="#" class="auth-link sm" onclick="forgotPassword();">forgot password?</a>
-            </div>
-
-            <button class="auth-btn" onclick="login();">Log In</button>
-
-            <p class="auth-small">by logging in, you agree to our <a href="privacypolicy.php" class="auth-link">privacy policy</a></p>
-
-            <div class="auth-divider"><span>or</span></div>
-
-            <p class="auth-switch">don't have an account? <a href="#" class="auth-link bold" onclick="showRegister();">Create Account</a></p>
-            <p class="auth-admin"><a href="adminSignIn.php" class="auth-link sm">PiNK AURA Admin Login →</a></p>
-        </div>
-        <!-- /login -->
-
-        <!-- ===== REGISTER FORM ===== -->
-        <div class="auth-card hidden" id="registerCard">
-
-            <div class="auth-card__deco">✿ ✦ ✿</div>
-            <h2 class="auth-card__title">Create Account</h2>
-
-            <div class="col-12 d-none" id="msgdiv_r">
-                <div class="alert alert-danger" role="alert" id="msg_r"></div>
-            </div>
-
-            <!-- name row -->
-            <div class="inp-row">
-                <div class="inp-wrap">
-                    <input type="text" id="fname" class="inp-field" placeholder=" " required>
-                    <label class="inp-label">First Name</label>
+                <div class="col-12 d-none" id="msgdiv">
+                    <div class="alert alert-danger" role="alert" id="msg">
+                    </div>
                 </div>
-                <div class="inp-wrap">
-                    <input type="text" id="lname" class="inp-field" placeholder=" " required>
-                    <label class="inp-label">Last Name</label>
+
+                <?php
+                    include "connection.php";
+
+                    $email = "";
+                    $password = "";
+
+                    if (isset($_COOKIE["email"])) {
+                        $email = $_COOKIE["email"];
+                    }
+
+                    if (isset($_COOKIE["password"])) {
+                        $password = $_COOKIE["password"];
+                    }
+                ?>
+
+                <div class="login-sec-form">
+                    <fieldset class="fieldset">
+                        <div class="col-12">
+                            <label for="email">Email</label><br>
+                            <input type="email" id="l_email" required value="<?php echo $email ?>"/>
+                        </div>
+                        <div class="col-12">
+                            <label for="password">Password</label><br>
+                            <div class="d-flex" style="position: relative;">
+                                <input type="password" id="l_password" required value="<?php echo $password ?>" style="letter-spacing: 5px;"/>
+                                <button class="show-pw-btn" onclick="showPwLogin();">
+                                    <i id="l_password_icon" class="bi bi-eye-slash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </fieldset>
                 </div>
+                <div class="login-sec-rm-fp">
+                    <div class="login-sec-rm">
+                        <input type="checkbox" id="l_rememberMe" />
+                        <label for="rememberMe">Remember Me</label>
+                    </div>
+                    <div class="login-sec-fp">
+                        <a type="button"  onclick="forgotPassword();">Forgot Password?</a>
+                    </div>
+                </div>
+                <div class="login-sec-btn mt-4">
+                    <a type="button" onclick="showRegister();" class="register-sec-admin-a mt-4">Don't have any account Yet?</a>
+                    <button class="primary-btn" onclick="customerLogin();">Login</button>
+                </div>
+                <a type="button" class="login-sec-admin-a mt-5" href="admin.html">PiNK AURA Admin login here ➵ </a>
             </div>
-
-            <!-- email -->
-            <div class="inp-wrap">
-                <input type="email" id="reg_email" class="inp-field" placeholder=" " required>
-                <label class="inp-label">Email</label>
-            </div>
-
-            <!-- password -->
-            <div class="inp-wrap">
-                <input type="password" id="reg_password" class="inp-field" placeholder=" " required>
-                <label class="inp-label">Password</label>
-                <button type="button" class="inp-eye" onclick="sp2();">
-                    <i id="spi2" class="bi bi-eye-slash"></i>
-                </button>
-            </div>
-
-            <!-- re-type password -->
-            <div class="inp-wrap">
-                <input type="password" id="reg_rpassword" class="inp-field" placeholder=" " required>
-                <label class="inp-label">Re-type Password</label>
-                <button type="button" class="inp-eye" onclick="sp3();">
-                    <i id="spi3" class="bi bi-eye-slash"></i>
-                </button>
-            </div>
-
-            <button class="auth-btn" onclick="register();">Create Account</button>
-
-            <p class="auth-small">by registering, you agree to our <a href="privacypolicy.php" class="auth-link">privacy policy</a></p>
-
-            <div class="auth-divider"><span>or</span></div>
-
-            <p class="auth-switch">already have an account? <a href="#" class="auth-link bold" onclick="showLogin();">Log In</a></p>
         </div>
-        <!-- /register -->
 
-    </div>
-    <!-- /auth-panel -->
-
-</div>
-<!-- /auth-page -->
-
-
-<!-- ── forgot password modal ── -->
-<div class="modal" tabindex="-1" id="fpmodal">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title fw-bold" style="font-family: ChakraPetch;">set a new password to your account</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body fp-modal">
+        <div class="register-sec-container d-none col-lg-4 p-2 d-flex justify-content-center align-items-center">
+            <div>
+                <h3 class="register-sec-header">✧˖° Your Glow Starts Here °˖✧</h3>
+                <h2 class="register-sec-header2 mt-4">Register</h2>
                 <div class="col-12 d-none" id="msgdiv2">
-                    <div class="alert alert-danger" role="alert" id="msg2"></div>
+                    <div class="alert alert-danger" role="alert" id="msg2">
+                    </div>
                 </div>
-                <div class="inp-wrap">
-                    <input type="password" id="np" class="inp-field" placeholder=" " required>
-                    <label class="inp-label">New Password</label>
-                    <button type="button" class="inp-eye" onclick="sp4();">
-                        <i id="spi4" class="bi bi-eye-slash"></i>
-                    </button>
+                <div class="register-sec-form">
+                    <fieldset class="fieldset">
+                        <div class="col-12 row">
+                            <div class="col-6">
+                                <label for="r_fname">First Name</label><br>
+                                <input type="text" id="r_fname" />
+                            </div>
+                            <div class="col-6">
+                                <label for="r_lname">Last Name</label><br>
+                                <input type="text" id="r_lname" />
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label for="email">Email</label><br>
+                            <input type="email" id="r_email" />
+                        </div>
+                        <div class="col-12">
+                            <label for="password">Password</label><br>
+                            <div class="d-flex" style="position: relative;">
+                                <input type="password" id="r_password" required placeholder="★ Use 5-8 characters ★" style="letter-spacing: 5px;"/>
+                                <button class="show-pw-btn" onclick="showPwReg1();">
+                                    <i id="r_password_icon" class="bi bi-eye-slash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label for="password">Re-type your password</label><br>
+                            <div class="d-flex" style="position: relative;">
+                                <input type="password" id="r_repassword" required style="letter-spacing: 5px;"/>
+                                <button class="show-pw-btn" onclick="showPwReg2();">
+                                    <i id="r_repassword_icon" class="bi bi-eye-slash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </fieldset>
                 </div>
-                <div class="inp-wrap" style="margin-top:1rem;">
-                    <input type="password" id="rp" class="inp-field" placeholder=" " required>
-                    <label class="inp-label">Re-type Password</label>
-                    <button type="button" class="inp-eye" onclick="sp5();">
-                        <i id="spi5" class="bi bi-eye-slash"></i>
-                    </button>
+                <div class="register-sec-btn mt-3">
+                    <p>by registering, you agree to our <a href="privacyPolicy.php">Privay Policy</a></p>
+                    <button class="primary-btn" onclick="customerRegister();">Create account</button>
                 </div>
-                <div class="inp-wrap" style="margin-top:1rem;">
-                    <input type="number" id="vcode" class="inp-field" placeholder=" ">
-                    <label class="inp-label">Verification Code</label>
-                </div>
-                <p style="font-size:0.72rem; color:var(--second-color); margin-top:0.3rem;">( check your email for the verification code )</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="auth-btn" style="width:auto; padding:0.5rem 1.5rem;" onclick="resetPassword();">Reset Password</button>
+                <a type="button" onclick="showLogin();" class="register-sec-admin-a mt-4">Already have an account?</a>
             </div>
         </div>
-    </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="js/bootstrap.bundle.js"></script>
-<script src="js/main.js"></script>
+        <div class="verification-sec-container d-none col-lg-4 p-1 d-flex justify-content-center align-items-center">
+            <div>  
+                <div class="verify-header">
+                    <h1>Verify Your Account</h1>
+                </div>
+                <p class="verify-text">Verification Code has been sent to Your Email ! Check your mails !!</p>
+                <div class="col-12 d-none" id="msgdiv3">
+                    <div class="alert alert-danger" role="alert" id="msg3">incorrect password
+                    </div>
+                </div>
+                <fieldset class="fieldset">
+                    <div class="col-12">
+                        <input type="hidden" id="verify_email" />
+                        <label for="vcode">Enter the verification code</label><br>
+                        <input type="text" id="vcode" placeholder="x x x x x x" style="letter-spacing: 10px;"/>
+                    </div>
+                </fieldset>
+                <div class="d-flex justify-content-end">
+                    <div class="col-3">
+                        <button class="secondary-btn">Resend</button>
+                    </div>
+                    <div class="col-3 ms-3">
+                        <button class="primary-btn" onclick="verifyAccount();">Verify</button>
+                    </div>
+                </div>
+            </div> 
+            
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="fpModal" tabindex="-1" aria-labelledby="fpModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <div class="fp-header">
+                        <h1>Reset Password</h1>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="background-color:rgb(253, 245, 246);">
+                    <div class="fp-sec-container w-100 p-1 d-flex justify-content-center align-items-center">
+                        <div>
+                            <div class="col-12 d-none" id="msgdiv4">
+                                    <div class="alert alert-danger" role="alert" id="msg4">
+                                    </div>
+                                </div>
+                            <p class="fp-text">Verification Code has been sent to Your Email ! Check your mails !!</p>
+                            <fieldset class="fieldset">
+                                <div class="col-12">
+                                    <label for="password">Set New Password</label><br>
+                                    <div class="d-flex" style="position: relative;">
+                                        <input type="password" id="fp_password" required placeholder="★ Use 5-8 characters ★" style="letter-spacing: 5px;"/>
+                                        <button class="show-pw-btn" onclick="showPwFp1();">
+                                            <i id="fp_password_icon" class="bi bi-eye-slash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="password">Re-type your password</label><br>
+                                    <div class="d-flex" style="position: relative;">
+                                        <input type="password" id="fp_repassword" required style="letter-spacing: 5px;"/>
+                                        <button class="show-pw-btn" onclick="showPwFp2();">
+                                            <i id="fp_repassword_icon" class="bi bi-eye-slash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-12">
+                                    <input type="hidden" id="verify_email" />
+                                    <label for="vcode">Enter the verification code</label><br>
+                                    <input type="text" id="fp_vcode" placeholder="x x x x x x" style="letter-spacing: 10px;"/>
+                                </div>
+                            </fieldset>
+                            
+                        </div> 
+                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-end">
+                        <div class="col-6">
+                            <button class="secondary-btn" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                        <div class="col-6 ms-3">
+                            <button class="primary-btn" onclick="PasswordReset();">Reset</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- js -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
 </body>
+
 </html>
